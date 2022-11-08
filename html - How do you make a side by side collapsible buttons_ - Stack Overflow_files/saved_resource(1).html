@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- saved from url=(0192)file:///C:/Users/jutrasjea/OneDrive%20-%20CSSS-T/Bureau/PHP/html%20-%20How%20do%20you%20make%20a%20side%20by%20side%20collapsible%20buttons_%20-%20Stack%20Overflow_files/saved_resource(1).html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
+    (function() {
+    class RuffleMimeType {
+        constructor(a, b, c) {
+            this.type = a, this.description = b, this.suffixes = c
+        }
+    }
+    class RuffleMimeTypeArray {
+        constructor(a) {
+            this.__mimetypes = [], this.__named_mimetypes = {};
+            for (let b of a) this.install(b)
+        }
+        install(a) {
+            let b = this.__mimetypes.length;
+            this.__mimetypes.push(a), this.__named_mimetypes[a.type] = a, this[a.type] = a, this[b] = a
+        }
+        item(a) {
+            return this.__mimetypes[a]
+        }
+        namedItem(a) {
+            return this.__named_mimetypes[a]
+        }
+        get length() {
+            return this.__mimetypes.length
+        }
+    }
+    class RufflePlugin extends RuffleMimeTypeArray {
+        constructor(a, b, c, d) {
+            super(d), this.name = a, this.description = b, this.filename = c
+        }
+        install(a) {
+            a.enabledPlugin || (a.enabledPlugin = this), super.install(a)
+        }
+    }
+    class RufflePluginArray {
+        constructor(a) {
+            this.__plugins = [], this.__named_plugins = {};
+            for (let b of a) this.install(b)
+        }
+        install(a) {
+            let b = this.__plugins.length;
+            this.__plugins.push(a), this.__named_plugins[a.name] = a, this[a.name] = a, this[b] = a
+        }
+        item(a) {
+            return this.__plugins[a]
+        }
+        namedItem(a) {
+            return this.__named_plugins[a]
+        }
+        get length() {
+            return this.__plugins.length
+        }
+    }
+    const FLASH_PLUGIN = new RufflePlugin("Shockwave Flash", "Shockwave Flash 32.0 r0", "ruffle.js", [new RuffleMimeType("application/futuresplash", "Shockwave Flash", "spl"), new RuffleMimeType("application/x-shockwave-flash", "Shockwave Flash", "swf"), new RuffleMimeType("application/x-shockwave-flash2-preview", "Shockwave Flash", "swf"), new RuffleMimeType("application/vnd.adobe.flash-movie", "Shockwave Flash", "swf")]);
+
+    function install_plugin(a) {
+        navigator.plugins.install || Object.defineProperty(navigator, "plugins", {
+            value: new RufflePluginArray(navigator.plugins),
+            writable: !1
+        }), navigator.plugins.install(a), 0 < a.length && !navigator.mimeTypes.install && Object.defineProperty(navigator, "mimeTypes", {
+            value: new RuffleMimeTypeArray(navigator.mimeTypes),
+            writable: !1
+        });
+        for (var b = 0; b < a.length; b += 1) navigator.mimeTypes.install(a[b])
+    }
+    install_plugin(FLASH_PLUGIN);
+})();
+</script>
+    <style>
+        :root {
+  font-family: sans-serif;
+}
+
+div.collapsible-container {
+  display: flex;
+  flex-wrap: nowrap
+}
+  div.collapsible-container > details {
+    flex-basis: 300px;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+
+details {
+  background-color: #777;
+  border: 1px solid black;
+  overflow: hidden;
+}
+details[open] {
+  background-color: black;
+}
+
+  details > summary {
+    color: white;
+    padding: 1em;
+    cursor: pointer;
+  }
+  details > summary:hover {
+    background-color: black;
+  }
+  details > summary:active {
+    background-color: pink;
+  }
+    details > summary::before {
+      display: inline;
+    }
+    details[open] > summary::before {
+      content: 'Close ';
+    }
+    details:not([open]) > summary::before {
+      content: 'Open ';
+    }
+  
+  details > summary + div {
+    background-color: #f1f1f1;
+    padding: 0.5em;
+  }
+
+
+/* Mobile-friendly (rounded corners on top and bottom items only): */
+/* This is commented-out because the StackOverflow snippet preview area is too narrow, so it will always use the mobile-friendly rules when we want to show the desktop styles instead:
+@media screen and (max-width: 767px) {
+  details:first-child {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+  }
+  details:last-child {
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+  }
+  div.collapsible-container {
+    flex-direction: column;
+  }
+    div.collapsible-container > details {
+      flex-basis: auto;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+}
+*/
+
+/* Same-row rounded-corners for desktops only: */
+@media screen and (min-width: 768px) {
+  details:first-child {
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+  }
+  details:last-child {
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+  }
+}
+    </style>
+    <script src="./snippet-javascript-console.min.js.téléchargement"></script><style type="text/css">.as-console-wrapper { position: fixed; bottom: 0; left: 0; right: 0; max-height: 150px; overflow-y: scroll; overflow-x: hidden; border-top: 1px solid #000; display: none; }
+.as-console { background: #e9e9e9; border: 1px solid #ccc; display: table; width: 100%; border-collapse: collapse; }
+.as-console-row { display: table-row; font-family: monospace; font-size: 13px; }
+.as-console-row:after { display: table-cell; padding: 3px 6px; color: rgba(0,0,0,.35); border: 1px solid #ccc; content: attr(data-date); vertical-align: top; }
+.as-console-row + .as-console-row > * { border: 1px solid #ccc; }
+.as-console-row-code { width: 100%; white-space: pre-wrap; padding: 3px 5px; display: table-cell; font-family: monospace; font-size: 13px; vertical-align: middle; }
+.as-console-error:before { content: 'Error: '; color: #f00; }
+.as-console-assert:before { content: 'Assertion failed: '; color: #f00; }
+.as-console-info:before { content: 'Info: '; color: #00f; }
+.as-console-warning:before { content: 'Warning: '; color: #e90 }
+@-webkit-keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+@-moz-keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+@-ms-keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+@keyframes flash { 0% { background: rgba(255,240,0,.25); } 100% { background: none; } }
+.as-console-row-code, .as-console-row:after { -webkit-animation: flash 1s; -moz-animation: flash 1s; -ms-animation: flash 1s; animation: flash 1s; }</style>
+</head>
+<body>
+    <div class="collapsible-container">
+
+  <details>
+    <summary>Section 1</summary>
+    <div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mauris orci, pellentesque a urna ac, blandit scelerisque metus. Aliquam vulputate, magna ut mattis ultrices, dui neque aliquam felis, et posuere ipsum neque scelerisque leo. Fusce consequat in turpis nec egestas. Nunc sit amet pharetra nunc. Aenean in nisl non ante auctor finibus nec a elit. Maecenas ultricies mauris nec neque ultricies, vitae facilisis augue elementum. Vivamus quis fringilla quam. Ut at dolor lobortis, pretium tortor eu, bibendum ligula. Quisque ac nunc quis nulla finibus finibus eget consequat libero.</p>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Section 2</summary>
+    <div>
+      <p>Curabitur elementum tellus in ex bibendum, vitae fermentum elit facilisis. Sed nec nulla gravida, rhoncus odio sit amet, tempus metus. Curabitur aliquet quam in libero convallis iaculis. Phasellus laoreet tincidunt augue.</p>
+      <p>Proin eros urna, facilisis non dictum vitae, blandit in nulla. Cras sagittis nibh lorem, eu interdum felis dignissim non. Etiam aliquet turpis urna, feugiat ornare urna pellentesque eu. Aenean congue risus lorem, eu laoreet urna congue facilisis. Curabitur scelerisque magna quis mauris rhoncus fermentum. Maecenas venenatis egestas felis vitae porttitor.</p>
+      <p>Nam laoreet augue vel purus pharetra, ornare sollicitudin urna sagittis. Curabitur condimentum elit euismod fermentum porttitor. Sed tellus diam, fermentum et vulputate nec, bibendum at sem. Nunc posuere vel ipsum quis lacinia.</p>
+    </div>
+  </details>
+  
+  <details>
+    <summary>Section 3</summary>
+    <div>
+      <p>Nulla vel lobortis neque. Proin magna justo, consectetur ut nunc at, consectetur pulvinar mauris.</p>
+    </div>
+  </details>
+
+</div>
+    <script type="text/javascript">
+        
+    </script>
+
+<div class="as-console-wrapper"><div class="as-console"></div></div></body></html>
